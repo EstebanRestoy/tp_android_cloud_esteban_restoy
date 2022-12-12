@@ -58,7 +58,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         }.forEach { (categoryName, boargames) ->
             result.add(Category(name=categoryName))
             result.addAll(boargames)
-            //result.add(Footer(boargames.sumOf { it.price }))
+            result.add(Footer("Total Cost : " + boargames.sumOf { it.price }.toString() ))
 
         }
         return result
