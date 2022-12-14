@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import fr.upjv.ccm.tp1.R
 import fr.upjv.ccm.tp1.databinding.ItemCustomRecyclerBinding
 import fr.upjv.ccm.tp1.databinding.ItemCustomRecyclerHeaderBinding
 import fr.upjv.ccm.tp1.model.MyObjectForRecyclerView
@@ -98,6 +100,10 @@ class AndroidVersionViewHolder(
         binding.itemRecyclerViewName.text = boardgame.name
         binding.itemRecyclerViewPrice.text = "${boardgame.price}" + "€"
         binding.itemRecyclerViewDescription.text = boardgame.desc
+        Glide.with(itemView.context)
+            .load(boardgame.image)
+            .placeholder(R.drawable.sea)
+            .into(binding.imageView)
     }
 }
 
@@ -122,3 +128,4 @@ enum class MyItemType(val type: Int) {
     HEADER(1),
     FOOTER(2)
 }
+

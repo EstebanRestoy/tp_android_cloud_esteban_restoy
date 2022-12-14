@@ -15,7 +15,7 @@
         app:layout_constraintDimensionRatio="1:1"
         android:layout_width="0dp"
         android:layout_height="128dp"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/gloom"/>
 
     <Button
         app:layout_constraintTop_toBottomOf="@id/mainImageViewLogo"
@@ -33,7 +33,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/mainButtonRecyclerView"
-        android:text="RecyclerView"
+        android:text="Ma collection de jeux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
