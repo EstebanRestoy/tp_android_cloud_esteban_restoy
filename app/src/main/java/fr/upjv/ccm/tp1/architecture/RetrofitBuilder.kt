@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitBuilder {
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.boardgameatlas.com/api/search/")
+        .baseUrl("https://api.boardgameatlas.com/api/")
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()))
         .build()
 

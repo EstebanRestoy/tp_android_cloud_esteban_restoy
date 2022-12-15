@@ -47,7 +47,7 @@ class SearchBoardgameViewActivity : AppCompatActivity() {
                     .setAction("Action", null)
                     .show()
 
-                adapter.submitList(viewModel.fetchData(text = s.toString()))
+                viewModel.fetchData(text = s.toString())
 
            }
 
@@ -68,6 +68,17 @@ class SearchBoardgameViewActivity : AppCompatActivity() {
 
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.searchBoardgameList.observe(this, BoardgameListObserver)
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.searchBoardgameList.removeObserver(BoardgameListObserver)
+    }
 
 
     private fun onItemClick(Boardgame: Boardgame, view : View) {
