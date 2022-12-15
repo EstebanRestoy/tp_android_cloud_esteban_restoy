@@ -26,7 +26,7 @@ class SearchBoardgameViewModel : ViewModel() {
             val emptyBoardGameList: MutableList<Boardgame> = arrayListOf()
 
 
-            RetrofitBuilder.getBoardgameQuote().getBoardgamesByName(name=text).forEach {
+            RetrofitBuilder.getBoardgameQuote().getBoardgamesByName(name=text).games.forEach {
                 emptyBoardGameList.add(it)
             }
 
@@ -43,6 +43,5 @@ class SearchBoardgameViewModel : ViewModel() {
             )
         }
     }
-
 
 }

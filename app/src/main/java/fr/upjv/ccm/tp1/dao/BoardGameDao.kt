@@ -18,4 +18,7 @@ interface BoardgameDao {
 
     @Query("DELETE FROM boardgame_object_table")
     fun deleteAll()
+
+    @Query("DELETE FROM boardgame_object_table WHERE name= :name")
+    fun deleteOne(name: String)
 }

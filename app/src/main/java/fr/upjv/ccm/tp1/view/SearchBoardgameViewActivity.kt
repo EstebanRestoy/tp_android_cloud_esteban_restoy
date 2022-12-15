@@ -3,6 +3,7 @@ package fr.upjv.ccm.tp1.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.EditText
@@ -84,6 +85,7 @@ class SearchBoardgameViewActivity : AppCompatActivity() {
     private fun onItemClick(Boardgame: Boardgame, view : View) {
         view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
         Toast.makeText(this, Boardgame.name + " Successfully added !", Toast.LENGTH_LONG).show()
+        Log.v("TEST", Boardgame.toString());
         viewModel.insertBoardGame(Boardgame)
         finish()
     }

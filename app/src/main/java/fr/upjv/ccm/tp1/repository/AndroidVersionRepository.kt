@@ -21,6 +21,10 @@ class AndroidVersionRepository {
         mBoardGameDatabase.insert(objectDataSample.toRoomObject())
     }
 
+    fun deleteOneBoardgame(name: String) {
+        mBoardGameDatabase.deleteOne(name)
+    }
+
     fun deleteAllBoardgame() {
         mBoardGameDatabase.deleteAll()
     }

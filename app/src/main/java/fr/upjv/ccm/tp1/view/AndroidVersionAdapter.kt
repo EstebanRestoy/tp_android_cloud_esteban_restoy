@@ -1,5 +1,6 @@
 package fr.upjv.ccm.tp1.view
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,8 +91,9 @@ class AndroidVersionViewHolder(
 
 
     init {
-        binding.root.setOnClickListener {
+        binding.root.setOnLongClickListener() {
             onItemClick(ui, itemView)
+            true
         }
     }
 
@@ -99,7 +101,7 @@ class AndroidVersionViewHolder(
         ui = boardgame
         binding.itemRecyclerViewName.text = boardgame.name
         binding.itemRecyclerViewPrice.text = "${boardgame.price}" + "€"
-        binding.itemRecyclerViewDescription.text = boardgame.desc
+        binding.itemRecyclerViewDescription.text = Html.fromHtml(boardgame.desc)
         Glide.with(itemView.context)
             .load(boardgame.image)
             .placeholder(R.drawable.sea)

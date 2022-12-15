@@ -2,31 +2,39 @@ package fr.upjv.ccm.tp1.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.JsonDeserializationContext
+import com.google.gson.JsonDeserializer
+import com.google.gson.JsonElement
 import com.google.gson.annotations.Expose
+import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
+import java.lang.reflect.Type
 
 sealed class MyObjectForRecyclerView()
 
+
+data class BGList(
+    @SerializedName("games") var games: ArrayList<Boardgame>,
+    @SerializedName("count") var count: Int
+)
+
 data class Boardgame(
-    @Expose
     @SerializedName("name")
     val name : String,
 
-    @Expose
     @SerializedName("price")
     val price : Double,
 
-    @Expose
     @SerializedName("description")
     val desc: String,
 
-    @Expose
-    @SerializedName("type")
-    val category: String,
-
-    @Expose
     @SerializedName("thumb_url")
-    val image: String
+    val image: String,
+
+    @SerializedName("primary_publisher")
+    @JsonAdapter(PublisherSerializer::class)
+    val category: String
+
 ):MyObjectForRecyclerView()
 
 @Entity(tableName = "boardgame_object_table")
@@ -48,3 +56,16 @@ data class Category(
 data class Footer(
     val numberOfBoargames: String,
 ) : MyObjectForRecyclerView()
+
+class PublisherSerializer : JsonDeserializer<String?> {
+    override fun deserialize(
+        json: JsonElement,
+        typeOfT: Type?,
+        context: JsonDeserializationContext?
+    ): String {
+        if (json.asJsonObject["name"] == null){
+            return "Non renseigné"
+        }
+        return json.asJsonObject["name"].asString
+    }
+}

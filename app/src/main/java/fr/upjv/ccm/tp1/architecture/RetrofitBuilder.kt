@@ -9,7 +9,7 @@ object RetrofitBuilder {
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://api.boardgameatlas.com/api/")
-        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()))
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .build()
 
 

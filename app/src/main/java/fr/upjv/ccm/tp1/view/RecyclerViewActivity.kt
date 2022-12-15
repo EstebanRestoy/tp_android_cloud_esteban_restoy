@@ -66,9 +66,8 @@ class RecyclerViewActivity : AppCompatActivity() {
         viewModel.androidVersionList.observe(this, BoardgameListObserver)
     }
 
-    private fun onItemClick(Boardgame: Boardgame, view : View) {
-        view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-        Toast.makeText(this, Boardgame.name, Toast.LENGTH_LONG).show()
+    private fun onItemClick(boardgame: Boardgame, view : View) {
+        viewModel.deleteOneBoardgame(boardgame.name)
     }
 
 }

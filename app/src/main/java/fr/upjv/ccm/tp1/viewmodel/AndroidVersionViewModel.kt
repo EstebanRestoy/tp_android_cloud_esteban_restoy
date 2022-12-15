@@ -32,6 +32,12 @@ class AndroidVersionViewModel : ViewModel() {
             androidVersionRepository.deleteAllBoardgame()
         }
     }
+
+    fun deleteOneBoardgame(name: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            androidVersionRepository.deleteOneBoardgame(name)
+        }
+    }
 }
 
 private fun List<Boardgame>.toMyObjectForRecyclerView(): List<MyObjectForRecyclerView> {
